@@ -16,7 +16,7 @@ const Basket = sequelize.define('basket_data', {
 
 const BasketBook = sequelize.define('basket_book', {
   id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
-  bookId: { type: DataTypes.STRING, allowNull: false, },
+  book: { type: DataTypes.STRING, allowNull: false, },
 })
 
 User.hasOne(Basket) // 1 к 1

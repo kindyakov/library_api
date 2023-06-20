@@ -21,8 +21,10 @@ export const addBasket = asyncHandler(async (req, res) => {
   try {
     const { userId } = req.user
     const { id } = req.params;
-
-    const basketBook = await BasketBook.create({ basketDatumId: userId, bookId: id })
+    const basket = await Basket.findOne({
+      where: { userDatumId: userId },
+    })
+    const basketBook = await BasketBook.create({ basketDatumId: basket.id, book: id })
 
     res.json(basketBook)
   } catch (error) {
@@ -37,7 +39,7 @@ export const deleteBasket = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     const basketBook = await BasketBook.destroy({
-      where: { bookId: id }
+      where: { book: id }
     })
 
     const basket = await Basket.findOne({
