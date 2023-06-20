@@ -5,7 +5,6 @@ import dotenv from 'dotenv'
 import cors from "cors";
 import { errorHandler } from "./app/middleware/error.middleware.js";
 import indexRouters from "./app/index.routes.js";
-import { Basket, User, BasketBook } from './app/models/models.js';
 
 dotenv.config()
 
