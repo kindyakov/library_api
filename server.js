@@ -5,7 +5,6 @@ import dotenv from 'dotenv'
 import cors from "cors";
 import { errorHandler } from "./app/middleware/error.middleware.js";
 import indexRouters from "./app/index.routes.js";
-import { Basket, User, BasketBook } from './app/models/models.js';
 
 dotenv.config()
 
@@ -23,7 +22,7 @@ app.use(errorHandler)
 const main = async () => {
   try {
     await sequelize.authenticate()
-    await sequelize.sync({ force: true })
+    await sequelize.sync()
 
     app.listen(PORT, () => console.log(`🚀 server start http://localhost:${PORT}`.blue.bold))
   } catch (error) {
